@@ -287,4 +287,35 @@ The ontology is designed to be extensible to control-level attestations. Future 
 
 ## Contributing
 
-Contributions welcome! Please ensure any additions maintain OWL consistency and include appropriate documentation links for compliance frameworks.
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
+- Adding new compliance frameworks
+- Improving documentation
+- Testing changes
+
+Please ensure any additions:
+- Maintain OWL consistency
+- Include official documentation links
+- Add proper version information
+- Follow existing patterns in the ontology
+
+## Project Structure
+
+```
+compliance-ontology/
+├── compliance-ontology.ttl      # Main ontology (single source of truth)
+├── compliance_helper.py         # Python utilities for working with ontology
+├── generate_docs.py            # Documentation generator
+├── convert_formats.py          # Multi-format RDF converter
+├── pyproject.toml             # uv project configuration
+├── .github/workflows/docs.yml # CI/CD for GitHub Pages
+└── docs/                      # Generated (not in git)
+    ├── index.html            # Main documentation
+    ├── downloads.html        # Format downloads page
+    └── compliance-ontology.* # All RDF formats
+```
+
+## Acknowledgments
+
+- [pyLODE](https://github.com/RDFLib/pyLODE) for ontology documentation generation
+- [rdflib](https://github.com/RDFLib/rdflib) for RDF processing
+- All the standards bodies and organizations maintaining the compliance frameworks
