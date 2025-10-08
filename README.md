@@ -19,19 +19,45 @@ This ontology provides a structured way to represent:
 
 ## Supported Frameworks
 
+The ontology includes **30 compliance frameworks** covering global security and privacy requirements:
+
+### United States & International Standards
 | Framework | Version | Documentation |
 |-----------|---------|---------------|
 | ISO 27001 | 2022 | https://www.iso.org/standard/27001 |
+| ISO 42001 (AI) | 2023 | https://www.iso.org/standard/42001 |
 | CMMC | 2.0 | https://dodcio.defense.gov/CMMC/ |
 | FedRAMP | Rev. 5 (Low/Moderate/High) | https://www.fedramp.gov/rev5/baselines/ |
 | HIPAA Security Rule | 45 CFR Part 160 & 164 | https://www.hhs.gov/hipaa/for-professionals/security/ |
 | PCI DSS | 4.0.1 | https://www.pcisecuritystandards.org/document_library/ |
-| GDPR | Regulation (EU) 2016/679 | https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng |
+| GDPR (EU) | Regulation (EU) 2016/679 | https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng |
 | NIST CSF | 2.0 | https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf |
 | NIST SP 800-171 | Revision 3 | https://csrc.nist.gov/pubs/sp/800/171/r3/final |
 | NIST SP 800-53 | Revision 5 | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
-| ISO 42001 | 2023 | https://www.iso.org/standard/42001 |
 | SOC 2 | 2017 TSC (Revised 2022) | https://www.aicpa-cima.com/topic/audit-assurance/soc-2 |
+
+### Asia-Pacific
+- 🇦🇺 **Australia**: ISM (Information Security Manual)
+- 🇸🇬 **Singapore**: PDPA, MAS TRM
+- 🇯🇵 **Japan**: APPI (Personal Information Protection)
+- 🇰🇷 **South Korea**: PIPA, K-ISMS-P
+- 🇮🇳 **India**: DPDPA (Digital Personal Data Protection Act)
+- 🇨🇳 **China**: MLPS 2.0, PIPL
+- 🇳🇿 **New Zealand**: NZISM
+
+### Europe
+- 🇬🇧 **United Kingdom**: Cyber Essentials & Cyber Essentials Plus
+- 🇪🇸 **Spain**: ENS (Esquema Nacional de Seguridad)
+- 🇩🇪 **Germany**: BSI IT-Grundschutz
+- 🇫🇷 **France**: SecNumCloud (ANSSI)
+
+### Middle East
+- 🇦🇪 **UAE**: IA Regulation (NESA)
+- 🇸🇦 **Saudi Arabia**: ECC (Essential Cybersecurity Controls)
+
+### Americas
+- 🇨🇦 **Canada**: PIPEDA
+- 🇧🇷 **Brazil**: LGPD
 
 ## Installation
 
@@ -187,6 +213,27 @@ uv run python compliance_helper.py
 ```
 
 This will create example attestations and demonstrate querying capabilities.
+
+## Documentation
+
+The ontology documentation is automatically generated and published to GitHub Pages using [pyLODE](https://github.com/RDFLib/pyLODE).
+
+**View the documentation:** https://david4096.github.io/compliance-ontology/
+
+Each term in the ontology has its own section with:
+- IRI (namespace + term)
+- Description
+- Domain and range information
+- Related properties
+
+The documentation is regenerated automatically on every push to main via GitHub Actions.
+
+### Generating Documentation Locally
+
+```bash
+uv run python generate_docs.py
+open docs/index.html
+```
 
 ## Extending the Ontology
 

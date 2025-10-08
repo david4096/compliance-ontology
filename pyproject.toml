@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "pylode>=3.2.1",
     "rdflib>=7.2.1",
 ]
 

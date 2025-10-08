@@ -209,3 +209,6 @@ __marimo__/
 # RDF generated files
 compliance-ontology-with-examples.ttl
 my-compliance-data.ttl
+
+# Generated documentation (built by CI)
+docs/
