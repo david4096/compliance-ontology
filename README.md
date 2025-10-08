@@ -228,11 +228,24 @@ Each term in the ontology has its own section with:
 
 The documentation is regenerated automatically on every push to main via GitHub Actions.
 
+### Download Formats
+
+The ontology is available in multiple RDF serialization formats:
+
+**[📥 Download page](https://david4096.github.io/compliance-ontology/downloads.html)** - Available formats:
+- **Turtle (.ttl)** - Human-readable, recommended for editing
+- **RDF/XML (.rdf)** - W3C standard XML serialization
+- **JSON-LD (.jsonld)** - JSON-based linked data format
+- **N-Triples (.nt)** - Simple line-based format
+- **Notation3 (.n3)** - Turtle superset
+- **TriG (.trig)** - Extended for named graphs
+
 ### Generating Documentation Locally
 
 ```bash
 uv run python generate_docs.py
 open docs/index.html
+open docs/downloads.html
 ```
 
 ## Extending the Ontology

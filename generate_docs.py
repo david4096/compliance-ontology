@@ -54,6 +54,12 @@ Visit the [main ontology documentation](index.html) to explore:
 - Attestation types and compliance statuses
 - Usage examples
 
+## Download Formats
+
+The ontology is available in multiple RDF serialization formats:
+
+**[📥 Download the ontology](downloads.html)** in Turtle, RDF/XML, JSON-LD, N-Triples, N3, or TriG format.
+
 ## Ontology Namespace
 
 The ontology namespace is: `http://example.org/compliance#`
@@ -68,8 +74,14 @@ This documentation is regenerated automatically on every push to the main branch
     (docs_dir / "README.md").write_text(readme_content)
     print(f"✓ Generated {docs_dir / 'README.md'}")
 
+    # Run format conversion
+    print("\nConverting ontology to multiple formats...")
+    from convert_formats import convert_ontology
+    convert_ontology()
+
     print("\nDocumentation generation complete!")
     print(f"Open {docs_dir / 'index.html'} in a browser to view.")
+    print(f"Format downloads available at {docs_dir / 'downloads.html'}")
 
 
 if __name__ == "__main__":
