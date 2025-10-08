@@ -146,7 +146,8 @@ class ComplianceOntology:
                           attestation_date: Optional[datetime] = None,
                           expiration_date: Optional[date] = None,
                           evidence: Optional[str] = None,
-                          baseline: Optional[str] = None) -> URIRef:
+                          baseline: Optional[str] = None,
+                          framework_version: Optional[str] = None) -> URIRef:
         """
         Create a compliance attestation.
 
@@ -161,6 +162,7 @@ class ComplianceOntology:
             expiration_date: Optional expiration date
             evidence: Optional supporting evidence
             baseline: Optional baseline (e.g., "Low", "Moderate", "High" for FedRAMP)
+            framework_version: Optional version of the framework being attested to
 
         Returns:
             URIRef of the created attestation
@@ -194,6 +196,10 @@ class ComplianceOntology:
         if evidence:
             self.graph.add((attestation_uri, self.ns.attestationEvidence,
                           Literal(evidence, datatype=XSD.string)))
+
+        if framework_version:
+            self.graph.add((attestation_uri, self.ns.attestedFrameworkVersion,
+                          Literal(framework_version, datatype=XSD.string)))
 
         # If baseline specified, link to it
         if baseline:

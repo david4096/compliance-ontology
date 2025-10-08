@@ -69,6 +69,12 @@
     rdfs:comment "URL to official documentation for the framework" ;
     rdfs:label "documentation URL" .
 
+:homepageURL rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ComplianceFramework ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "URL to the framework's main homepage or information page" ;
+    rdfs:label "homepage URL" .
+
 :publicationDate rdf:type owl:DatatypeProperty ;
     rdfs:domain :ComplianceFramework ;
     rdfs:range xsd:date ;
@@ -92,6 +98,12 @@
     rdfs:range xsd:string ;
     rdfs:comment "Supporting evidence or documentation for the attestation" ;
     rdfs:label "attestation evidence" .
+
+:attestedFrameworkVersion rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The specific version of the framework being attested to" ;
+    rdfs:label "attested framework version" .
 
 :attesterName rdf:type owl:DatatypeProperty ;
     rdfs:domain :Attester ;
@@ -218,6 +230,7 @@
     rdfs:label "ISO/IEC 27001" ;
     rdfs:comment "Information security management systems standard" ;
     :frameworkVersion "2022" ;
+    :homepageURL "https://www.iso.org/isoiec-27001-information-security.html"^^xsd:anyURI ;
     :documentationURL "https://www.iso.org/standard/27001"^^xsd:anyURI ;
     :publicationDate "2022-10-25"^^xsd:date .
 
@@ -226,7 +239,8 @@
     rdfs:label "CMMC" ;
     rdfs:comment "Cybersecurity Maturity Model Certification" ;
     :frameworkVersion "2.0" ;
-    :documentationURL "https://dodcio.defense.gov/CMMC/"^^xsd:anyURI ;
+    :homepageURL "https://dodcio.defense.gov/CMMC/"^^xsd:anyURI ;
+    :documentationURL "https://dodcio.defense.gov/CMMC/Model/"^^xsd:anyURI ;
     :publicationDate "2021-12-02"^^xsd:date .
 
 :FedRAMP rdf:type owl:NamedIndividual ,
@@ -234,6 +248,7 @@
     rdfs:label "FedRAMP" ;
     rdfs:comment "Federal Risk and Authorization Management Program" ;
     :frameworkVersion "Rev. 5" ;
+    :homepageURL "https://www.fedramp.gov/"^^xsd:anyURI ;
     :documentationURL "https://www.fedramp.gov/rev5/baselines/"^^xsd:anyURI ;
     :hasBaseline :FedRAMPLow , :FedRAMPModerate , :FedRAMPHigh .
 
@@ -260,6 +275,7 @@
     rdfs:label "HIPAA Security Rule" ;
     rdfs:comment "Health Insurance Portability and Accountability Act Security Rule" ;
     :frameworkVersion "45 CFR Part 160 and Part 164" ;
+    :homepageURL "https://www.hhs.gov/hipaa/"^^xsd:anyURI ;
     :documentationURL "https://www.hhs.gov/hipaa/for-professionals/security/"^^xsd:anyURI .
 
 :PCIDSS rdf:type owl:NamedIndividual ,
@@ -267,6 +283,7 @@
     rdfs:label "PCI DSS" ;
     rdfs:comment "Payment Card Industry Data Security Standard" ;
     :frameworkVersion "4.0.1" ;
+    :homepageURL "https://www.pcisecuritystandards.org/"^^xsd:anyURI ;
     :documentationURL "https://www.pcisecuritystandards.org/document_library/"^^xsd:anyURI ;
     :publicationDate "2024-06-11"^^xsd:date .
 
@@ -275,6 +292,7 @@
     rdfs:label "GDPR" ;
     rdfs:comment "General Data Protection Regulation" ;
     :frameworkVersion "Regulation (EU) 2016/679" ;
+    :homepageURL "https://gdpr.eu/"^^xsd:anyURI ;
     :documentationURL "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"^^xsd:anyURI ;
     :publicationDate "2018-05-25"^^xsd:date .
 
@@ -283,6 +301,7 @@
     rdfs:label "NIST Cybersecurity Framework" ;
     rdfs:comment "NIST Cybersecurity Framework" ;
     :frameworkVersion "2.0" ;
+    :homepageURL "https://www.nist.gov/cyberframework"^^xsd:anyURI ;
     :documentationURL "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"^^xsd:anyURI ;
     :publicationDate "2024-02-26"^^xsd:date .
 
@@ -291,6 +310,7 @@
     rdfs:label "NIST SP 800-171" ;
     rdfs:comment "Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations" ;
     :frameworkVersion "Revision 3" ;
+    :homepageURL "https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_171_3_0_0"^^xsd:anyURI ;
     :documentationURL "https://csrc.nist.gov/pubs/sp/800/171/r3/final"^^xsd:anyURI ;
     :publicationDate "2024-05-14"^^xsd:date .
 
@@ -299,6 +319,7 @@
     rdfs:label "NIST SP 800-53" ;
     rdfs:comment "Security and Privacy Controls for Information Systems and Organizations" ;
     :frameworkVersion "Revision 5" ;
+    :homepageURL "https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_53_5_1_1"^^xsd:anyURI ;
     :documentationURL "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"^^xsd:anyURI ;
     :publicationDate "2020-09-23"^^xsd:date .
 
@@ -307,6 +328,7 @@
     rdfs:label "ISO/IEC 42001" ;
     rdfs:comment "Artificial Intelligence Management System" ;
     :frameworkVersion "2023" ;
+    :homepageURL "https://www.iso.org/standard/81230.html"^^xsd:anyURI ;
     :documentationURL "https://www.iso.org/standard/42001"^^xsd:anyURI ;
     :publicationDate "2023-12-18"^^xsd:date .
 
@@ -315,7 +337,8 @@
     rdfs:label "SOC 2" ;
     rdfs:comment "Service Organization Control 2 - Trust Services Criteria" ;
     :frameworkVersion "2017 TSC (Revised 2022)" ;
-    :documentationURL "https://www.aicpa-cima.com/topic/audit-assurance/soc-2"^^xsd:anyURI ;
+    :homepageURL "https://www.aicpa-cima.com/topic/audit-assurance/soc-2"^^xsd:anyURI ;
+    :documentationURL "https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022"^^xsd:anyURI ;
     :publicationDate "2022-01-01"^^xsd:date .
 
 # International Frameworks
@@ -325,6 +348,7 @@
     rdfs:label "Australian ISM" ;
     rdfs:comment "Australian Government Information Security Manual" ;
     :frameworkVersion "Current" ;
+    :homepageURL "https://www.cyber.gov.au/"^^xsd:anyURI ;
     :documentationURL "https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/ism"^^xsd:anyURI .
 
 :UK_CyberEssentials rdf:type owl:NamedIndividual ,
@@ -332,13 +356,15 @@
     rdfs:label "UK Cyber Essentials" ;
     rdfs:comment "UK NCSC Cyber Essentials and Cyber Essentials Plus" ;
     :frameworkVersion "v3.2" ;
-    :documentationURL "https://www.ncsc.gov.uk/cyberessentials/overview"^^xsd:anyURI .
+    :homepageURL "https://www.ncsc.gov.uk/cyberessentials/overview"^^xsd:anyURI ;
+    :documentationURL "https://www.ncsc.gov.uk/files/cyber-essentials-requirements-for-it-infrastructure-v3-2.pdf"^^xsd:anyURI .
 
 :CA_PIPEDA rdf:type owl:NamedIndividual ,
     :ComplianceFramework ;
     rdfs:label "PIPEDA" ;
     rdfs:comment "Canadian Personal Information Protection and Electronic Documents Act" ;
     :frameworkVersion "Current" ;
+    :homepageURL "https://www.priv.gc.ca/"^^xsd:anyURI ;
     :documentationURL "https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/"^^xsd:anyURI .
 
 :SG_PDPA rdf:type owl:NamedIndividual ,
@@ -346,6 +372,7 @@
     rdfs:label "Singapore PDPA" ;
     rdfs:comment "Singapore Personal Data Protection Act" ;
     :frameworkVersion "2012 (Amended)" ;
+    :homepageURL "https://www.pdpc.gov.sg/"^^xsd:anyURI ;
     :documentationURL "https://www.pdpc.gov.sg/"^^xsd:anyURI .
 
 :SG_MAS_TRM rdf:type owl:NamedIndividual ,
@@ -353,6 +380,7 @@
     rdfs:label "MAS TRM" ;
     rdfs:comment "Monetary Authority of Singapore Technology Risk Management Guidelines" ;
     :frameworkVersion "2021" ;
+    :homepageURL "https://www.mas.gov.sg/"^^xsd:anyURI ;
     :documentationURL "https://www.mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines"^^xsd:anyURI ;
     :publicationDate "2021-01-18"^^xsd:date .
 
@@ -361,6 +389,7 @@
     rdfs:label "Japan APPI" ;
     rdfs:comment "Act on the Protection of Personal Information" ;
     :frameworkVersion "2020 Amendment (Effective 2022)" ;
+    :homepageURL "https://www.ppc.go.jp/en/"^^xsd:anyURI ;
     :documentationURL "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/en"^^xsd:anyURI ;
     :publicationDate "2022-04-01"^^xsd:date .
 
@@ -369,6 +398,7 @@
     rdfs:label "South Korea PIPA" ;
     rdfs:comment "Personal Information Protection Act" ;
     :frameworkVersion "2011 (Amended)" ;
+    :homepageURL "https://www.pipc.go.kr/np/default/page.do?mCode=E020010000"^^xsd:anyURI ;
     :documentationURL "https://elaw.klri.re.kr/eng_service/lawView.do?hseq=53044&lang=ENG"^^xsd:anyURI .
 
 :KR_ISMS_P rdf:type owl:NamedIndividual ,
@@ -376,6 +406,7 @@
     rdfs:label "K-ISMS-P" ;
     rdfs:comment "Korea Information Security Management System - Personal Information" ;
     :frameworkVersion "2018 (Merged)" ;
+    :homepageURL "https://isms.kisa.or.kr/"^^xsd:anyURI ;
     :documentationURL "https://isms.kisa.or.kr/main/ispims/intro/"^^xsd:anyURI .
 
 :IN_DPDPA rdf:type owl:NamedIndividual ,
@@ -383,6 +414,7 @@
     rdfs:label "India DPDPA" ;
     rdfs:comment "Digital Personal Data Protection Act" ;
     :frameworkVersion "2023" ;
+    :homepageURL "https://www.meity.gov.in/"^^xsd:anyURI ;
     :documentationURL "https://www.meity.gov.in/writereaddata/files/Digital%20Personal%20Data%20Protection%20Act%202023.pdf"^^xsd:anyURI ;
     :publicationDate "2023-08-11"^^xsd:date .
 
@@ -391,6 +423,7 @@
     rdfs:label "Brazil LGPD" ;
     rdfs:comment "Lei Geral de Proteção de Dados (General Data Protection Law)" ;
     :frameworkVersion "Law 13.709/2018" ;
+    :homepageURL "https://www.gov.br/anpd/"^^xsd:anyURI ;
     :documentationURL "https://lgpd-brazil.info/"^^xsd:anyURI ;
     :publicationDate "2020-09-18"^^xsd:date .
 
@@ -399,6 +432,7 @@
     rdfs:label "Spain ENS" ;
     rdfs:comment "Esquema Nacional de Seguridad (National Security Framework)" ;
     :frameworkVersion "RD 311/2022" ;
+    :homepageURL "https://ens.ccn.cni.es/"^^xsd:anyURI ;
     :documentationURL "https://ens.ccn.cni.es/en/"^^xsd:anyURI ;
     :publicationDate "2022-05-03"^^xsd:date .
 
@@ -407,6 +441,7 @@
     rdfs:label "BSI IT-Grundschutz" ;
     rdfs:comment "German Federal Office for Information Security IT-Grundschutz" ;
     :frameworkVersion "Edition 2023" ;
+    :homepageURL "https://www.bsi.bund.de/"^^xsd:anyURI ;
     :documentationURL "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html"^^xsd:anyURI .
 
 :NZ_NZISM rdf:type owl:NamedIndividual ,
@@ -414,6 +449,7 @@
     rdfs:label "New Zealand ISM" ;
     rdfs:comment "New Zealand Information Security Manual" ;
     :frameworkVersion "Current" ;
+    :homepageURL "https://www.gcsb.govt.nz/"^^xsd:anyURI ;
     :documentationURL "https://nzism.gcsb.govt.nz/"^^xsd:anyURI .
 
 :AE_IAR rdf:type owl:NamedIndividual ,
@@ -421,6 +457,7 @@
     rdfs:label "UAE IA Regulation" ;
     rdfs:comment "UAE Information Assurance Regulation (NESA)" ;
     :frameworkVersion "v1.1 (2020)" ;
+    :homepageURL "https://u.ae/"^^xsd:anyURI ;
     :documentationURL "https://u.ae/en/information-and-services/justice-safety-and-the-law/cyber-safety-and-digital-security/uae-information-assurance-regulation"^^xsd:anyURI ;
     :publicationDate "2020-03-01"^^xsd:date .
 
@@ -429,6 +466,7 @@
     rdfs:label "Saudi Arabia ECC" ;
     rdfs:comment "Essential Cybersecurity Controls" ;
     :frameworkVersion "ECC-2:2024" ;
+    :homepageURL "https://nca.gov.sa/"^^xsd:anyURI ;
     :documentationURL "https://nca.gov.sa/en/regulatory-documents/guidelines-list/gecc/"^^xsd:anyURI ;
     :publicationDate "2024-01-01"^^xsd:date .
 
@@ -437,6 +475,7 @@
     rdfs:label "SecNumCloud" ;
     rdfs:comment "French ANSSI SecNumCloud Qualification" ;
     :frameworkVersion "v3.2" ;
+    :homepageURL "https://cyber.gouv.fr/"^^xsd:anyURI ;
     :documentationURL "https://cyber.gouv.fr/secnumcloud-pour-les-fournisseurs-de-services-cloud"^^xsd:anyURI .
 
 :CN_MLPS rdf:type owl:NamedIndividual ,
@@ -444,6 +483,7 @@
     rdfs:label "China MLPS" ;
     rdfs:comment "Multi-Level Protection Scheme" ;
     :frameworkVersion "MLPS 2.0" ;
+    :homepageURL "https://www.gov.cn/"^^xsd:anyURI ;
     :documentationURL "https://www.gov.cn/zhengce/content/2017-06/01/content_5197888.htm"^^xsd:anyURI .
 
 :CN_PIPL rdf:type owl:NamedIndividual ,
@@ -451,6 +491,7 @@
     rdfs:label "China PIPL" ;
     rdfs:comment "Personal Information Protection Law" ;
     :frameworkVersion "2021" ;
+    :homepageURL "http://www.npc.gov.cn/"^^xsd:anyURI ;
     :documentationURL "http://en.npc.gov.cn.cdurl.cn/2021-12/29/c_694559.htm"^^xsd:anyURI ;
     :publicationDate "2021-11-01"^^xsd:date .
 

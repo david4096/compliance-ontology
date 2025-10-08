@@ -22,42 +22,42 @@ This ontology provides a structured way to represent:
 The ontology includes **30 compliance frameworks** covering global security and privacy requirements:
 
 ### United States & International Standards
-| Framework | Version | Documentation |
-|-----------|---------|---------------|
-| ISO 27001 | 2022 | https://www.iso.org/standard/27001 |
-| ISO 42001 (AI) | 2023 | https://www.iso.org/standard/42001 |
-| CMMC | 2.0 | https://dodcio.defense.gov/CMMC/ |
-| FedRAMP | Rev. 5 (Low/Moderate/High) | https://www.fedramp.gov/rev5/baselines/ |
-| HIPAA Security Rule | 45 CFR Part 160 & 164 | https://www.hhs.gov/hipaa/for-professionals/security/ |
-| PCI DSS | 4.0.1 | https://www.pcisecuritystandards.org/document_library/ |
-| GDPR (EU) | Regulation (EU) 2016/679 | https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng |
-| NIST CSF | 2.0 | https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf |
-| NIST SP 800-171 | Revision 3 | https://csrc.nist.gov/pubs/sp/800/171/r3/final |
-| NIST SP 800-53 | Revision 5 | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
-| SOC 2 | 2017 TSC (Revised 2022) | https://www.aicpa-cima.com/topic/audit-assurance/soc-2 |
+| Framework | Version | Link |
+|-----------|---------|------|
+| [ISO/IEC 27001](https://www.iso.org/isoiec-27001-information-security.html) | 2022 | [Website](https://www.iso.org/isoiec-27001-information-security.html) |
+| [ISO 42001 (AI)](https://www.iso.org/standard/81230.html) | 2023 | [Website](https://www.iso.org/standard/81230.html) |
+| [CMMC](https://dodcio.defense.gov/CMMC/) | 2.0 | [Website](https://dodcio.defense.gov/CMMC/) |
+| [FedRAMP](https://www.fedramp.gov/) | Rev. 5 (Low/Moderate/High) | [Website](https://www.fedramp.gov/) |
+| [HIPAA Security Rule](https://www.hhs.gov/hipaa/) | 45 CFR Part 160 & 164 | [Website](https://www.hhs.gov/hipaa/) |
+| [PCI DSS](https://www.pcisecuritystandards.org/) | 4.0.1 | [Website](https://www.pcisecuritystandards.org/) |
+| [GDPR (EU)](https://gdpr.eu/) | Regulation (EU) 2016/679 | [Website](https://gdpr.eu/) |
+| [NIST CSF](https://www.nist.gov/cyberframework) | 2.0 | [Website](https://www.nist.gov/cyberframework) |
+| [NIST SP 800-171](https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_171_3_0_0) | Revision 3 | [Website](https://csrc.nist.gov/pubs/sp/800/171/r3/final) |
+| [NIST SP 800-53](https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_53_5_1_1) | Revision 5 | [Website](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) |
+| [SOC 2](https://www.aicpa-cima.com/topic/audit-assurance/soc-2) | 2017 TSC (Revised 2022) | [Website](https://www.aicpa-cima.com/topic/audit-assurance/soc-2) |
 
 ### Asia-Pacific
-- 🇦🇺 **Australia**: ISM (Information Security Manual)
-- 🇸🇬 **Singapore**: PDPA, MAS TRM
-- 🇯🇵 **Japan**: APPI (Personal Information Protection)
-- 🇰🇷 **South Korea**: PIPA, K-ISMS-P
-- 🇮🇳 **India**: DPDPA (Digital Personal Data Protection Act)
-- 🇨🇳 **China**: MLPS 2.0, PIPL
-- 🇳🇿 **New Zealand**: NZISM
+- 🇦🇺 **Australia**: [ISM (Information Security Manual)](https://www.cyber.gov.au/)
+- 🇸🇬 **Singapore**: [PDPA](https://www.pdpc.gov.sg/), [MAS TRM](https://www.mas.gov.sg/)
+- 🇯🇵 **Japan**: [APPI (Personal Information Protection)](https://www.ppc.go.jp/en/)
+- 🇰🇷 **South Korea**: [PIPA](https://www.pipc.go.kr/np/default/page.do?mCode=E020010000), [K-ISMS-P](https://isms.kisa.or.kr/)
+- 🇮🇳 **India**: [DPDPA (Digital Personal Data Protection Act)](https://www.meity.gov.in/)
+- 🇨🇳 **China**: [MLPS 2.0](https://www.gov.cn/), [PIPL](http://www.npc.gov.cn/)
+- 🇳🇿 **New Zealand**: [NZISM](https://www.gcsb.govt.nz/)
 
 ### Europe
-- 🇬🇧 **United Kingdom**: Cyber Essentials & Cyber Essentials Plus
-- 🇪🇸 **Spain**: ENS (Esquema Nacional de Seguridad)
-- 🇩🇪 **Germany**: BSI IT-Grundschutz
-- 🇫🇷 **France**: SecNumCloud (ANSSI)
+- 🇬🇧 **United Kingdom**: [Cyber Essentials & Cyber Essentials Plus](https://www.ncsc.gov.uk/cyberessentials/overview)
+- 🇪🇸 **Spain**: [ENS (Esquema Nacional de Seguridad)](https://ens.ccn.cni.es/)
+- 🇩🇪 **Germany**: [BSI IT-Grundschutz](https://www.bsi.bund.de/)
+- 🇫🇷 **France**: [SecNumCloud (ANSSI)](https://cyber.gouv.fr/)
 
 ### Middle East
-- 🇦🇪 **UAE**: IA Regulation (NESA)
-- 🇸🇦 **Saudi Arabia**: ECC (Essential Cybersecurity Controls)
+- 🇦🇪 **UAE**: [IA Regulation (NESA)](https://u.ae/)
+- 🇸🇦 **Saudi Arabia**: [ECC (Essential Cybersecurity Controls)](https://nca.gov.sa/)
 
 ### Americas
-- 🇨🇦 **Canada**: PIPEDA
-- 🇧🇷 **Brazil**: LGPD
+- 🇨🇦 **Canada**: [PIPEDA](https://www.priv.gc.ca/)
+- 🇧🇷 **Brazil**: [LGPD](https://www.gov.br/anpd/)
 
 ## Installation
 
@@ -178,8 +178,8 @@ if is_expired:
 
 ### Data Properties
 
-- Framework properties: `frameworkVersion`, `documentationURL`, `publicationDate`
-- Attestation properties: `attestationDate`, `expirationDate`, `attestationEvidence`
+- Framework properties: `frameworkVersion`, `homepageURL`, `documentationURL`, `publicationDate`
+- Attestation properties: `attestationDate`, `expirationDate`, `attestationEvidence`, `attestedFrameworkVersion`
 - System properties: `systemName`, `systemDescription`
 - Attester properties: `attesterName`, `attesterCredentials`
 - Baseline properties: `baselineName`, `controlCount`
