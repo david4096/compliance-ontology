@@ -1,0 +1,470 @@
+@prefix : <http://example.org/compliance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://example.org/compliance#> .
+
+<http://example.org/compliance> rdf:type owl:Ontology ;
+    dcterms:title "Compliance Framework Ontology" ;
+    dcterms:description "An ontology for representing compliance frameworks, attestations, and compliance status" ;
+    dcterms:created "2025-10-08"^^xsd:date ;
+    owl:versionInfo "1.0.0" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasAttestation rdf:type owl:ObjectProperty ;
+    rdfs:domain :System ;
+    rdfs:range :Attestation ;
+    rdfs:comment "Links a system to its compliance attestation" ;
+    rdfs:label "has attestation" .
+
+:attestsCompliance rdf:type owl:ObjectProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range :ComplianceFramework ;
+    rdfs:comment "Links an attestation to the framework it attests compliance with" ;
+    rdfs:label "attests compliance" .
+
+:hasComplianceStatus rdf:type owl:ObjectProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range :ComplianceStatus ;
+    rdfs:comment "The compliance status of an attestation" ;
+    rdfs:label "has compliance status" .
+
+:hasAttestationType rdf:type owl:ObjectProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range :AttestationType ;
+    rdfs:comment "The type of attestation (self-attested, third-party, etc.)" ;
+    rdfs:label "has attestation type" .
+
+:attestedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range :Attester ;
+    rdfs:comment "The entity that provided the attestation" ;
+    rdfs:label "attested by" .
+
+:hasBaseline rdf:type owl:ObjectProperty ;
+    rdfs:domain :ComplianceFramework ;
+    rdfs:range :Baseline ;
+    rdfs:comment "Links a framework to its baselines (e.g., FedRAMP Low/Moderate/High)" ;
+    rdfs:label "has baseline" .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+:frameworkVersion rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ComplianceFramework ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The version of the compliance framework" ;
+    rdfs:label "framework version" .
+
+:documentationURL rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ComplianceFramework ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "URL to official documentation for the framework" ;
+    rdfs:label "documentation URL" .
+
+:publicationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ComplianceFramework ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date the framework version was published" ;
+    rdfs:label "publication date" .
+
+:attestationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:dateTime ;
+    rdfs:comment "Date and time the attestation was made" ;
+    rdfs:label "attestation date" .
+
+:expirationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date when the attestation expires" ;
+    rdfs:label "expiration date" .
+
+:attestationEvidence rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attestation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Supporting evidence or documentation for the attestation" ;
+    rdfs:label "attestation evidence" .
+
+:attesterName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attester ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Name of the attesting entity" ;
+    rdfs:label "attester name" .
+
+:attesterCredentials rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Attester ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Credentials or certifications of the attester" ;
+    rdfs:label "attester credentials" .
+
+:systemName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :System ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Name of the system being attested" ;
+    rdfs:label "system name" .
+
+:systemDescription rdf:type owl:DatatypeProperty ;
+    rdfs:domain :System ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of the system" ;
+    rdfs:label "system description" .
+
+:baselineName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Baseline ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Name of the baseline (e.g., 'Low', 'Moderate', 'High')" ;
+    rdfs:label "baseline name" .
+
+:controlCount rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Baseline ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Number of controls in this baseline" ;
+    rdfs:label "control count" .
+
+#################################################################
+#    Classes
+#################################################################
+
+:System rdf:type owl:Class ;
+    rdfs:comment "A system, application, or organization that may have compliance attestations" ;
+    rdfs:label "System" .
+
+:Attestation rdf:type owl:Class ;
+    rdfs:comment "A compliance attestation for a system" ;
+    rdfs:label "Attestation" .
+
+:ComplianceFramework rdf:type owl:Class ;
+    rdfs:comment "A compliance or security framework" ;
+    rdfs:label "Compliance Framework" .
+
+:Baseline rdf:type owl:Class ;
+    rdfs:comment "A specific baseline within a framework (e.g., FedRAMP Moderate)" ;
+    rdfs:label "Baseline" .
+
+:Attester rdf:type owl:Class ;
+    rdfs:comment "An entity that provides attestation (individual, organization, third-party auditor)" ;
+    rdfs:label "Attester" .
+
+:ComplianceStatus rdf:type owl:Class ;
+    rdfs:comment "The status of compliance" ;
+    rdfs:label "Compliance Status" .
+
+:AttestationType rdf:type owl:Class ;
+    rdfs:comment "The type of attestation" ;
+    rdfs:label "Attestation Type" .
+
+#################################################################
+#    Individuals - Compliance Status
+#################################################################
+
+:Compliant rdf:type owl:NamedIndividual ,
+    :ComplianceStatus ;
+    rdfs:comment "Fully compliant with the framework" ;
+    rdfs:label "Compliant" .
+
+:InProgress rdf:type owl:NamedIndividual ,
+    :ComplianceStatus ;
+    rdfs:comment "Working towards compliance" ;
+    rdfs:label "In Progress" .
+
+:NonCompliant rdf:type owl:NamedIndividual ,
+    :ComplianceStatus ;
+    rdfs:comment "Not compliant with the framework" ;
+    rdfs:label "Non-Compliant" .
+
+:PartiallyCompliant rdf:type owl:NamedIndividual ,
+    :ComplianceStatus ;
+    rdfs:comment "Partially compliant with the framework" ;
+    rdfs:label "Partially Compliant" .
+
+#################################################################
+#    Individuals - Attestation Types
+#################################################################
+
+:SelfAttested rdf:type owl:NamedIndividual ,
+    :AttestationType ;
+    rdfs:comment "Attestation provided by the organization itself" ;
+    rdfs:label "Self-Attested" .
+
+:ThirdPartyAttested rdf:type owl:NamedIndividual ,
+    :AttestationType ;
+    rdfs:comment "Attestation provided by an independent third party" ;
+    rdfs:label "Third-Party Attested" .
+
+:CertifiedCompliant rdf:type owl:NamedIndividual ,
+    :AttestationType ;
+    rdfs:comment "Officially certified as compliant by an authorized body" ;
+    rdfs:label "Certified Compliant" .
+
+:AuditorVerified rdf:type owl:NamedIndividual ,
+    :AttestationType ;
+    rdfs:comment "Verified by an independent auditor" ;
+    rdfs:label "Auditor Verified" .
+
+#################################################################
+#    Individuals - Compliance Frameworks
+#################################################################
+
+:ISO27001 rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "ISO/IEC 27001" ;
+    rdfs:comment "Information security management systems standard" ;
+    :frameworkVersion "2022" ;
+    :documentationURL "https://www.iso.org/standard/27001"^^xsd:anyURI ;
+    :publicationDate "2022-10-25"^^xsd:date .
+
+:CMMC rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "CMMC" ;
+    rdfs:comment "Cybersecurity Maturity Model Certification" ;
+    :frameworkVersion "2.0" ;
+    :documentationURL "https://dodcio.defense.gov/CMMC/"^^xsd:anyURI ;
+    :publicationDate "2021-12-02"^^xsd:date .
+
+:FedRAMP rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "FedRAMP" ;
+    rdfs:comment "Federal Risk and Authorization Management Program" ;
+    :frameworkVersion "Rev. 5" ;
+    :documentationURL "https://www.fedramp.gov/rev5/baselines/"^^xsd:anyURI ;
+    :hasBaseline :FedRAMPLow , :FedRAMPModerate , :FedRAMPHigh .
+
+:FedRAMPLow rdf:type owl:NamedIndividual ,
+    :Baseline ;
+    rdfs:label "FedRAMP Low Baseline" ;
+    :baselineName "Low" ;
+    :controlCount 156 .
+
+:FedRAMPModerate rdf:type owl:NamedIndividual ,
+    :Baseline ;
+    rdfs:label "FedRAMP Moderate Baseline" ;
+    :baselineName "Moderate" ;
+    :controlCount 323 .
+
+:FedRAMPHigh rdf:type owl:NamedIndividual ,
+    :Baseline ;
+    rdfs:label "FedRAMP High Baseline" ;
+    :baselineName "High" ;
+    :controlCount 421 .
+
+:HIPAA rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "HIPAA Security Rule" ;
+    rdfs:comment "Health Insurance Portability and Accountability Act Security Rule" ;
+    :frameworkVersion "45 CFR Part 160 and Part 164" ;
+    :documentationURL "https://www.hhs.gov/hipaa/for-professionals/security/"^^xsd:anyURI .
+
+:PCIDSS rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "PCI DSS" ;
+    rdfs:comment "Payment Card Industry Data Security Standard" ;
+    :frameworkVersion "4.0.1" ;
+    :documentationURL "https://www.pcisecuritystandards.org/document_library/"^^xsd:anyURI ;
+    :publicationDate "2024-06-11"^^xsd:date .
+
+:GDPR rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "GDPR" ;
+    rdfs:comment "General Data Protection Regulation" ;
+    :frameworkVersion "Regulation (EU) 2016/679" ;
+    :documentationURL "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng"^^xsd:anyURI ;
+    :publicationDate "2018-05-25"^^xsd:date .
+
+:NIST_CSF rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "NIST Cybersecurity Framework" ;
+    rdfs:comment "NIST Cybersecurity Framework" ;
+    :frameworkVersion "2.0" ;
+    :documentationURL "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"^^xsd:anyURI ;
+    :publicationDate "2024-02-26"^^xsd:date .
+
+:NIST_800_171 rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "NIST SP 800-171" ;
+    rdfs:comment "Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations" ;
+    :frameworkVersion "Revision 3" ;
+    :documentationURL "https://csrc.nist.gov/pubs/sp/800/171/r3/final"^^xsd:anyURI ;
+    :publicationDate "2024-05-14"^^xsd:date .
+
+:NIST_800_53 rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "NIST SP 800-53" ;
+    rdfs:comment "Security and Privacy Controls for Information Systems and Organizations" ;
+    :frameworkVersion "Revision 5" ;
+    :documentationURL "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"^^xsd:anyURI ;
+    :publicationDate "2020-09-23"^^xsd:date .
+
+:ISO42001 rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "ISO/IEC 42001" ;
+    rdfs:comment "Artificial Intelligence Management System" ;
+    :frameworkVersion "2023" ;
+    :documentationURL "https://www.iso.org/standard/42001"^^xsd:anyURI ;
+    :publicationDate "2023-12-18"^^xsd:date .
+
+:SOC2 rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "SOC 2" ;
+    rdfs:comment "Service Organization Control 2 - Trust Services Criteria" ;
+    :frameworkVersion "2017 TSC (Revised 2022)" ;
+    :documentationURL "https://www.aicpa-cima.com/topic/audit-assurance/soc-2"^^xsd:anyURI ;
+    :publicationDate "2022-01-01"^^xsd:date .
+
+# International Frameworks
+
+:AU_ISM rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Australian ISM" ;
+    rdfs:comment "Australian Government Information Security Manual" ;
+    :frameworkVersion "Current" ;
+    :documentationURL "https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/ism"^^xsd:anyURI .
+
+:UK_CyberEssentials rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "UK Cyber Essentials" ;
+    rdfs:comment "UK NCSC Cyber Essentials and Cyber Essentials Plus" ;
+    :frameworkVersion "v3.2" ;
+    :documentationURL "https://www.ncsc.gov.uk/cyberessentials/overview"^^xsd:anyURI .
+
+:CA_PIPEDA rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "PIPEDA" ;
+    rdfs:comment "Canadian Personal Information Protection and Electronic Documents Act" ;
+    :frameworkVersion "Current" ;
+    :documentationURL "https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/"^^xsd:anyURI .
+
+:SG_PDPA rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Singapore PDPA" ;
+    rdfs:comment "Singapore Personal Data Protection Act" ;
+    :frameworkVersion "2012 (Amended)" ;
+    :documentationURL "https://www.pdpc.gov.sg/"^^xsd:anyURI .
+
+:SG_MAS_TRM rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "MAS TRM" ;
+    rdfs:comment "Monetary Authority of Singapore Technology Risk Management Guidelines" ;
+    :frameworkVersion "2021" ;
+    :documentationURL "https://www.mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines"^^xsd:anyURI ;
+    :publicationDate "2021-01-18"^^xsd:date .
+
+:JP_APPI rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Japan APPI" ;
+    rdfs:comment "Act on the Protection of Personal Information" ;
+    :frameworkVersion "2020 Amendment (Effective 2022)" ;
+    :documentationURL "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/en"^^xsd:anyURI ;
+    :publicationDate "2022-04-01"^^xsd:date .
+
+:KR_PIPA rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "South Korea PIPA" ;
+    rdfs:comment "Personal Information Protection Act" ;
+    :frameworkVersion "2011 (Amended)" ;
+    :documentationURL "https://elaw.klri.re.kr/eng_service/lawView.do?hseq=53044&lang=ENG"^^xsd:anyURI .
+
+:KR_ISMS_P rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "K-ISMS-P" ;
+    rdfs:comment "Korea Information Security Management System - Personal Information" ;
+    :frameworkVersion "2018 (Merged)" ;
+    :documentationURL "https://isms.kisa.or.kr/main/ispims/intro/"^^xsd:anyURI .
+
+:IN_DPDPA rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "India DPDPA" ;
+    rdfs:comment "Digital Personal Data Protection Act" ;
+    :frameworkVersion "2023" ;
+    :documentationURL "https://www.meity.gov.in/writereaddata/files/Digital%20Personal%20Data%20Protection%20Act%202023.pdf"^^xsd:anyURI ;
+    :publicationDate "2023-08-11"^^xsd:date .
+
+:BR_LGPD rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Brazil LGPD" ;
+    rdfs:comment "Lei Geral de Proteção de Dados (General Data Protection Law)" ;
+    :frameworkVersion "Law 13.709/2018" ;
+    :documentationURL "https://lgpd-brazil.info/"^^xsd:anyURI ;
+    :publicationDate "2020-09-18"^^xsd:date .
+
+:ES_ENS rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Spain ENS" ;
+    rdfs:comment "Esquema Nacional de Seguridad (National Security Framework)" ;
+    :frameworkVersion "RD 311/2022" ;
+    :documentationURL "https://ens.ccn.cni.es/en/"^^xsd:anyURI ;
+    :publicationDate "2022-05-03"^^xsd:date .
+
+:DE_BSI_Grundschutz rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "BSI IT-Grundschutz" ;
+    rdfs:comment "German Federal Office for Information Security IT-Grundschutz" ;
+    :frameworkVersion "Edition 2023" ;
+    :documentationURL "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/it-grundschutz_node.html"^^xsd:anyURI .
+
+:NZ_NZISM rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "New Zealand ISM" ;
+    rdfs:comment "New Zealand Information Security Manual" ;
+    :frameworkVersion "Current" ;
+    :documentationURL "https://nzism.gcsb.govt.nz/"^^xsd:anyURI .
+
+:AE_IAR rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "UAE IA Regulation" ;
+    rdfs:comment "UAE Information Assurance Regulation (NESA)" ;
+    :frameworkVersion "v1.1 (2020)" ;
+    :documentationURL "https://u.ae/en/information-and-services/justice-safety-and-the-law/cyber-safety-and-digital-security/uae-information-assurance-regulation"^^xsd:anyURI ;
+    :publicationDate "2020-03-01"^^xsd:date .
+
+:SA_ECC rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "Saudi Arabia ECC" ;
+    rdfs:comment "Essential Cybersecurity Controls" ;
+    :frameworkVersion "ECC-2:2024" ;
+    :documentationURL "https://nca.gov.sa/en/regulatory-documents/guidelines-list/gecc/"^^xsd:anyURI ;
+    :publicationDate "2024-01-01"^^xsd:date .
+
+:FR_SecNumCloud rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "SecNumCloud" ;
+    rdfs:comment "French ANSSI SecNumCloud Qualification" ;
+    :frameworkVersion "v3.2" ;
+    :documentationURL "https://cyber.gouv.fr/secnumcloud-pour-les-fournisseurs-de-services-cloud"^^xsd:anyURI .
+
+:CN_MLPS rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "China MLPS" ;
+    rdfs:comment "Multi-Level Protection Scheme" ;
+    :frameworkVersion "MLPS 2.0" ;
+    :documentationURL "https://www.gov.cn/zhengce/content/2017-06/01/content_5197888.htm"^^xsd:anyURI .
+
+:CN_PIPL rdf:type owl:NamedIndividual ,
+    :ComplianceFramework ;
+    rdfs:label "China PIPL" ;
+    rdfs:comment "Personal Information Protection Law" ;
+    :frameworkVersion "2021" ;
+    :documentationURL "http://en.npc.gov.cn.cdurl.cn/2021-12/29/c_694559.htm"^^xsd:anyURI ;
+    :publicationDate "2021-11-01"^^xsd:date .
+
+#################################################################
+#    General Axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Attestation
+                :AttestationType
+                :Attester
+                :Baseline
+                :ComplianceFramework
+                :ComplianceStatus
+                :System
+              )
+] .

@@ -1,0 +1,15 @@
+[project]
+name = "compliance-ontology"
+version = "0.1.0"
+description = "OWL ontology for representing compliance frameworks, attestations, and compliance status"
+readme = "README.md"
+authors = [
+    { name = "David" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "rdflib>=7.2.1",
+]
+
+[project.scripts]
+compliance-example = "compliance_helper:create_example_attestations"

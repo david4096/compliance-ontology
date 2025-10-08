@@ -205,3 +205,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# RDF generated files
+compliance-ontology-with-examples.ttl
+my-compliance-data.ttl
