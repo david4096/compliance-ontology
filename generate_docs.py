@@ -195,6 +195,111 @@ def create_frameworks_page(docs_dir: Path):
     print(f"✓ Generated frameworks listing: {frameworks_page}")
 
 
+def add_named_individuals_section(html_file: Path):
+    """Add a section showing framework named individuals as examples."""
+
+    # Load ontology
+    g = Graph()
+    g.parse("compliance-ontology.ttl", format="turtle")
+    ns = Namespace("http://example.org/compliance#")
+
+    # Query for frameworks (just show a few examples)
+    query = """
+    PREFIX : <http://example.org/compliance#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT ?framework ?label ?comment ?version ?homepage ?documentation
+    WHERE {
+        ?framework a :ComplianceFramework .
+        ?framework rdfs:label ?label .
+        OPTIONAL { ?framework rdfs:comment ?comment }
+        OPTIONAL { ?framework :frameworkVersion ?version }
+        OPTIONAL { ?framework :homepageURL ?homepage }
+        OPTIONAL { ?framework :documentationURL ?documentation }
+    }
+    ORDER BY ?label
+    LIMIT 5
+    """
+
+    results = list(g.query(query))
+
+    # Build the examples section HTML
+    examples_html = '''
+      <div id="examples">
+        <h2>Framework Examples <span style="font-size: 14px; font-weight: normal;">(Named Individuals)</span></h2>
+        <div class="entity">
+            <p>The ontology includes 30 compliance frameworks as named individuals of the <code>ComplianceFramework</code> class.
+            Here are some examples:</p>
+'''
+
+    for row in results:
+        label = str(row.label)
+        iri = str(row.framework)
+        local_name = iri.split('#')[-1]
+        comment = str(row.comment) if row.comment else ''
+        version = str(row.version) if row.version else 'N/A'
+        homepage = str(row.homepage) if row.homepage else ''
+        documentation = str(row.documentation) if row.documentation else ''
+
+        examples_html += f'''
+            <div class="entity" style="border-left: 4px solid #3498db; padding-left: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">{label}</h3>
+                <p><strong>IRI:</strong> <code>{iri}</code></p>
+                <p><strong>Local Name:</strong> <code>{local_name}</code></p>
+                <p><strong>Type:</strong> <a href="#ComplianceFramework">ComplianceFramework</a></p>
+                <p>{comment}</p>
+                <dl>
+                    <dt>frameworkVersion</dt>
+                    <dd><code>"{version}"</code></dd>
+'''
+
+        if homepage:
+            examples_html += f'''
+                    <dt>homepageURL</dt>
+                    <dd><a href="{homepage}">{homepage}</a></dd>
+'''
+
+        if documentation:
+            examples_html += f'''
+                    <dt>documentationURL</dt>
+                    <dd><a href="{documentation}">{documentation}</a></dd>
+'''
+
+        examples_html += '''
+                </dl>
+            </div>
+'''
+
+    examples_html += '''
+            <p style="margin-top: 30px;">
+                <strong>See all 30 frameworks:</strong>
+                <a href="frameworks.html" style="padding: 8px 15px; background: #3498db; color: white; border-radius: 5px; text-decoration: none;">
+                    View Complete Framework List →
+                </a>
+            </p>
+        </div>
+      </div>
+'''
+
+    # Read the existing HTML
+    html_content = html_file.read_text()
+
+    # Find where to insert (before the Namespaces div)
+    insertion_point = html_content.find('<div id="namespaces">')
+
+    if insertion_point == -1:
+        # Try before Legend section
+        insertion_point = html_content.find('<div id="legend">')
+
+    if insertion_point != -1:
+        # Insert the examples section
+        new_content = html_content[:insertion_point] + examples_html + html_content[insertion_point:]
+        html_file.write_text(new_content)
+        print("✓ Added framework examples section to documentation")
+    else:
+        print("⚠ Could not find insertion point for examples section")
+
+
 def generate_docs():
     """Generate documentation from the ontology TTL file."""
 
@@ -224,6 +329,9 @@ def generate_docs():
         sys.exit(1)
 
     print(f"✓ Generated {docs_dir / 'index.html'}")
+
+    # Add named individuals section
+    add_named_individuals_section(docs_dir / "index.html")
 
     # Create frameworks listing page
     create_frameworks_page(docs_dir)
